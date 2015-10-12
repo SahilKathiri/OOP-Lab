@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 class StudentID {
-    String year, disc, pt, campus;
+    String year, disc, pt, campus, cam;
     int id;
     Scanner inp = new Scanner(System.in);
 
@@ -29,12 +29,15 @@ class StudentID {
         String cam = inp.next();
         if (cam.equals("Dubai")) campus = "U";
         else campus = "" + cam.charAt(0);
+        this.cam = cam.toLowerCase();
 
         id = (int) Math.floor(Math.random()*501);
     } 
 
     public void display() {
+        System.out.print("ID: ");
         System.out.println(year + disc + pt + id + campus);    
+        System.out.print("email: f" + year + id + "@" + cam + ".bits-pilani.ac.in");
     }
 }
 
