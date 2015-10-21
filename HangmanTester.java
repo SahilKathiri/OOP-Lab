@@ -14,13 +14,14 @@ class HM {
         guessLeft = target.length + 3;
         errors = 0;
         done = new ArrayList<>();
+        guess = new char[target.length];
 
-        //for(int i = 0; i < guess.length; i++) 
-        //    guess[i] = ' ';
+        for(int i = 0; i < guess.length; i++) 
+            guess[i] = ' ';
     }
 
     public void guess(char c) {
-        done.add(c);
+        done.add('\u0000');
         for(int i = 0; i < target.length; i++) {
             String str = new String(target);
             
@@ -39,6 +40,7 @@ class HM {
             }
             
         }
+        done.add(c);
     }
 
     public boolean isDone() {
@@ -58,12 +60,13 @@ class HM {
     }
 
     public void display() {
+        String g = "";
         for(int i = 0; i < guess.length; i++) {
-            if(guess[i] == 0) System.out.print("-");
-            else System.out.print(guess[i]);
-
-            System.out.print("\tRC:"+guessLeft+"\nE:"+errors+"\t"+msg); 
-        }    
+            if(guess[i] == 0) g+="-";
+            else g+=guess[i];
+        }
+            System.out.print(g + " "+"\tRC:"+guessLeft+"\nE:"+errors+"\t"+msg); 
+        
     }
 }
 
@@ -72,7 +75,7 @@ public class HangmanTester {
         HM w = new HM();
         Scanner inp = new Scanner(System.in);
 
-        while(true) {
+        while(!w.isDone()) {
             System.out.print("B: Enter your guess: ");
             char guess = inp.next().charAt(0);
             w.guess(guess);
