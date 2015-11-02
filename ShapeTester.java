@@ -126,10 +126,14 @@ public class ShapeTester {
         }
 
         System.out.println("The area and perimeter of the following shapes are: ");
-        for(int i = 0; i < list.size(); i++) {
-            System.out.print((i+1) + ". ");
-            list.get(i).display();    
-            System.out.println();
+//        for(int i = 0; i < list.size(); i++) {
+//            System.out.print((i+1) + ". ");
+//            list.get(i).display();    
+//            System.out.println();
+//        }
+        
+        for(Shape s : list) {
+            s.display();    
         }
     }    
 }
